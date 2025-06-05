@@ -1,6 +1,7 @@
 /*******************************************************************************
- *
- *
+ *Sets up the display window and game panel.
+ * Holds the tile size and screen dimensions and calculates the tile layout.
+ * Implementing a singleton pattern to ensure only one instance of the display
  *******************************************************************************/
 package GameEngine;
 
@@ -24,11 +25,6 @@ public class Viewport {
     private final int screenWidth;
     private final int screenHeight;
 
-    // --- Resize Minimum Screen Components ---
-    private int MinTileCols = 16;
-    private int MinTileRows = 16;
-    private int minSize;
-
     private Viewport() {
         // --- initializing Display Size ---
         this.tileSize = 16;                       // 16px x 16px tiles
@@ -45,8 +41,9 @@ public class Viewport {
      * Ensuring that only one instance of an object exists by checking
      * if the object is null creates a new single viewport object.
      *
-     * @return
-     */
+     * @return : returns the display window if one is not already made
+     ***************************************************************************/
+
     public static Viewport getInstance() {
         if (instance == null) {
             instance = new Viewport();
@@ -74,6 +71,7 @@ public class Viewport {
 
             // --- Dock Icon ---
 
+
             }
 
     // --- Setter Methods ---
@@ -81,8 +79,8 @@ public class Viewport {
     /**
      * Setting the screenWidth to the width of the users display
      *
-     * @param screenWidth
-     * @return
+     * @param screenWidth : collects the width of the user's display
+     * @return : returns the user's screen width size
      ***************************************************************************/
     public int setScreenWidth(int screenWidth) {
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -90,43 +88,39 @@ public class Viewport {
     }
 
     /**
-     * Setting the screenHeight to the width of the users display
+     * Setting the screenHeight to the height of the users display
      *
-     * @param screenHeight
-     * @return
+     * @param screenHeight : collects the height of the user's screen
+     * @return : returns the user's screen height size
      ***************************************************************************/
+
     public int setScreenHeight(int screenHeight) {
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
         return screenHeight;
     }
 
-    // Getter methods
-    public int tileSize() {
-        return tileSize;
-    }
-
-    public int scale() {
-        return scale;
-    }
-
-    public int scaledTileSize() {
-        return scaledTileSize;
-    }
-
-    public int screenWidthInTiles() {
-        return screenWidthInTiles;
-    }
-
-    public int screenHeightInTiles() {
-        return screenHeightInTiles;
-    }
-
     public int screenWidth() {
         return screenWidth;
     }
-
     public int screenHeight() {
         return screenHeight;
+    }
+
+    // --- Getter methods ---
+    public int tileSize() {
+        return tileSize;
+    }
+    public int scale() {
+        return scale;
+    }
+    public int scaledTileSize() {
+        return scaledTileSize;
+    }
+    public int screenWidthInTiles() {
+        return screenWidthInTiles;
+    }
+    public int screenHeightInTiles() {
+        return screenHeightInTiles;
     }
 
 }

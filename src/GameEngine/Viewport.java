@@ -63,16 +63,18 @@ public class Viewport {
         if (display != null) {
             return;
         }
+            // --- Creating the Display Window --
+            display = new JFrame("Farming Game");
+            display.setResizable(true);
+            display.setSize(screenWidthInTiles, screenHeightInTiles);
+            display.setMinimumSize(new Dimension(840, 688));
+            display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            display.setLocationRelativeTo(null);
+            display.setVisible(true);
 
-        // --- Creating the Display Window --
-        display = new JFrame("Farming Game");
-        display.setResizable(true);
-        display.setSize(screenWidthInTiles, screenHeightInTiles);
-        display.setMinimumSize(new Dimension(256, 256));
-        display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        display.setLocationRelativeTo(null);
+            // --- Dock Icon ---
 
-    }
+            }
 
     // --- Setter Methods ---
 
